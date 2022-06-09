@@ -23,7 +23,7 @@ const clearCalc = function(){
     displayValue = []
     valueA = 0
     valueB = 0
-    click = 0
+    step = 0
 }
 
 const clearDisplay = function(){
@@ -35,7 +35,8 @@ const clearDisplay = function(){
 let numPad = document.querySelector('.numPad')
 let display = document.querySelector('.display');
 let clear = document.querySelector('.clear');
-let multi = document.querySelector('.multiply');
+let multiplyButton = document.querySelector('.multiply');
+let divideButton = document.querySelector('.divide');
 let result = document.querySelector('.result')
 
 for (let i=0; i<=9; i++){
@@ -66,8 +67,7 @@ body.addEventListener('click', (e)=>{
 
 })
 
-
- multi.addEventListener('click',()=>{
+ multiplyButton.addEventListener('click',()=>{
     if (step == 0){
         valueA = display.textContent;
         step++
@@ -79,6 +79,19 @@ body.addEventListener('click', (e)=>{
     }
     type = 1
  })
+
+divideButton.addEventListener('click', ()=>{
+    if (step == 0){
+        valueA = display.textContent;
+        step++
+    }else if(step == 2){
+        valueB = display.textContent;
+        display.textContent = operator(divide,valueA, valueB);
+        valueA = display.textContent;
+        step = 1
+    }
+    type = 2
+})
 
 clear.addEventListener('click', ()=>{
     clearCalc();
