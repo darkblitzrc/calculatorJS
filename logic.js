@@ -53,6 +53,8 @@ displayValue = []
 valueA = 0
 valueB = 0
 
+step = 0
+type = 0
 
 let body = document.querySelector('.calcBody');
 body.addEventListener('click', (e)=>{
@@ -64,19 +66,18 @@ body.addEventListener('click', (e)=>{
 
 })
 
-click = 0
 
  multi.addEventListener('click',()=>{
-    if (click == 0){
+    if (step == 0){
         valueA = display.textContent;
-        click++
-    }else if(click == 2){
+        step++
+    }else if(step == 2){
         valueB = display.textContent;
         display.textContent = operator(multiply,valueA, valueB);
         valueA = display.textContent;
-        click = 1
+        step = 1
     }
-    
+    type = 1
  })
 
 clear.addEventListener('click', ()=>{
@@ -84,8 +85,18 @@ clear.addEventListener('click', ()=>{
 });
 
 numPad.addEventListener('click', ()=>{
-    if (click == 1){
+    if (step == 1){
         clearDisplay();
-        click++
+        step++
+    }
+})
+
+result.addEventListener('click',()=>{
+    if(type == 1){
+        valueB = display.textContent
+        display.textContent = operator(multiply,valueA, valueB);
+    }else if(type == 2){
+        valueB = display.textContent
+        display.textContent = operator(divide,valueA, valueB);
     }
 })
