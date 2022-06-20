@@ -55,7 +55,7 @@ valueA = 0
 valueB = 0
 
 step = 0
-type = 0
+type = 0 //1 = multiplication, 2 = division, 3 = sum, 4 = substraction, 5 = result 
 
 let body = document.querySelector('.calcBody');
 body.addEventListener('click', (e)=>{
@@ -68,28 +68,58 @@ body.addEventListener('click', (e)=>{
 })
 
  multiplyButton.addEventListener('click',()=>{
-    if (step == 0){
-        valueA = display.textContent;
-        step++
-    }else if(step == 2){
-        valueB = display.textContent;
-        display.textContent = operator(multiply,valueA, valueB);
-        valueA = display.textContent;
-        step = 1
+    if (type != 1){
+        if(type == 2 && valueB == 0){
+            step = 2
+        }else if(type == 2){
+            valueB = display.textContent;
+            display.textContent = operator(divide,valueA, valueB);
+            valueA = display.textContent;
+            step = 2
+        }else if (type == 5){
+            valueA = display.textContent;
+            step = 2
+        }
     }
+        if(step == 1){
+            valueA = display.textContent;
+            step = 2
+        }else if(step == 3){
+            valueB = display.textContent;
+            display.textContent = operator(multiply,valueA, valueB);
+            valueA = display.textContent;
+            step = 2
+        }
+        
+    
     type = 1
  })
 
 divideButton.addEventListener('click', ()=>{
-    if (step == 0){
-        valueA = display.textContent;
-        step++
-    }else if(step == 2){
-        valueB = display.textContent;
-        display.textContent = operator(divide,valueA, valueB);
-        valueA = display.textContent;
-        step = 1
+    if (type != 2){
+        if(type == 1 && valueB == 0){
+            step = 2
+        }if(type == 1){
+            valueB = display.textContent;
+            display.textContent = operator(multiply,valueA, valueB);
+            valueA = display.textContent;
+            step = 2
+        }else if (type == 5){
+            valueA = display.textContent;
+            step = 2
+        }
     }
+
+        if(step == 1){
+            valueA = display.textContent;
+            step = 2
+        }else if(step == 3){
+            valueB = display.textContent;
+            display.textContent = operator(divide,valueA, valueB);
+            valueA = display.textContent;
+            step = 2
+        }
+        
     type = 2
 })
 
@@ -98,18 +128,31 @@ clear.addEventListener('click', ()=>{
 });
 
 numPad.addEventListener('click', ()=>{
-    if (step == 1){
+    if (valueA == 0 & valueB == 0){
+        step = 1
+    }else if (step == 2){
         clearDisplay();
-        step++
+        step = 3
     }
-})
+}) 
 
 result.addEventListener('click',()=>{
-    if(type == 1){
-        valueB = display.textContent
+    if(type == 1 & valueB == 0){
+        valueB = display.textContent;
         display.textContent = operator(multiply,valueA, valueB);
-    }else if(type == 2){
-        valueB = display.textContent
+        valueA = display.textContent;
+        valueB = 0;
+    }else if(type == 1){
+        valueB = display.textContent;
+        display.textContent = operator(multiply,valueA, valueB);
+    }else if(type == 2 & valueB == 0){
+        valueB = display.textContent;
         display.textContent = operator(divide,valueA, valueB);
+        valueA = display.textContent;
+    }else if(type == 2){
+        valueB = display.textContent;
+        display.textContent = operator(divide,valueA, valueB);
+        valueA = display.textContent;      
     }
+    type = 5
 })

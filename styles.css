@@ -3,10 +3,13 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
+
 }
 
 .calcBody{
     display: flex;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px #0000003a;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
@@ -21,22 +24,35 @@ body{
     flex-wrap: wrap;
     height: 400px;
     width: 300px;
-    background-color: beige;
+    background-color: rgb(240, 252, 172);
 }
 
 .operators{
     display: flex;
+    width: 400px;
+    justify-content: center;
 }
 
-.multiply, .sum, .divide, .result, .clear{
+button{
     width: 50px;
     height: 50px;
-    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
+.displayContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .display{
+    margin-top: 20px;
     height: 50px;
-    width: 290px;
+    width: 70%;
     background: rgb(113, 255, 167);
-    font-size: 40px;
+    font-size: 50px;
+    box-shadow: inset 10px 10px 6px #00000018;
 }
