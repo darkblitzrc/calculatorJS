@@ -8,39 +8,67 @@ body{
 
 .calcBody{
     display: flex;
-    border-radius: 10px;
-    box-shadow: 0px 10px 30px #0000003a;
+    border-radius: 20px;
+    justify-content: flex-end;
+    box-shadow: 0px 10px 30px #0000007e;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
     height: 500px;
-    width: 400px;
-    background-color: rgb(214, 214, 214);
+    width: 280px;
+    background-color: #22252d;
 }
 
 .numPad{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-    height: 400px;
-    width: 300px;
-    background-color: rgb(240, 252, 172);
+    align-items: flex-start;
+    height: 100%;
+    width: 180px;
 }
 
-.operators{
+.top-row{
     display: flex;
-    width: 400px;
+    width: 100%;
     justify-content: center;
+    margin-top: 20px;
 }
 
-button{
+.content{
+    display: flex;
+    width: 100%;
+}
+
+.op{
     width: 50px;
     height: 50px;
+    font-size: 18px;
+    background-color: #2d323b;
+    color: #00d1c7;
     display: flex;
+    margin: 5px;
+    border: none;
+    border-radius: 7px;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+}
+
+.op:active{
+    background-color: #22252d;
+}
+
+.number, .decimal{
+    font-size: 25px;
+    background-color: #2d323b;
+    color: #e2e2e2;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border-radius: 7px;
+    border: none;
+    
+}
+
+.number:active{
+    background-color: #22252d;
 }
 
 .displayContainer{
@@ -49,10 +77,25 @@ button{
     justify-content: center;
 }
 .display{
-    margin-top: 20px;
+    margin-bottom: 40px;
     height: 50px;
     width: 70%;
-    background: rgb(113, 255, 167);
-    font-size: 50px;
-    box-shadow: inset 10px 10px 6px #00000018;
+    font-size: 40px;
+    color: #e2e2e2;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.secondOps{
+    display: flex;
+    flex-direction: column;
+}
+
+.bottomSection{
+    background-color: #292d36;
+    border-radius: 20px;
 }
